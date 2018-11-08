@@ -1,1 +1,21 @@
 /* pages/publish/publish.wxss */
+@import "../../app.wxss";
+.flex-wrp {
+  display: flex;
+}
+.text-input {
+  padding: 25rpx;
+  width: 650rpx;
+  height: 250rpx;
+  background: #f0f0f0;
+  margin: 0 25rpx;
+}
+.img {
+  background: #f0f0f0;
+  margin: 25rpx;
+  height: 200rpx;
+  width: 200rpx;
+}
+button {
+  width: 600rpx;
+}

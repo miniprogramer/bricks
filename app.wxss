@@ -7,3 +7,12 @@
   justify-content: space-between;
   box-sizing: border-box;
 }
+.common-radius {
+  border-radius: 10rpx;
+}
+.line {
+  background: #eeeeee;
+  height: 1px;
+  width: 720rpx;
+  margin: 0 15rpx 0 15rpx
+}

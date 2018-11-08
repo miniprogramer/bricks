@@ -5,7 +5,8 @@
     "pages/recommend/index",
     "pages/mine/index",
     "pages/samples/index",
-    "pages/publish/publish"
+    "pages/publish/publish",
+    "pages/profile/profile"
   ],
   "window": {
     "backgroundTextStyle": "dark",

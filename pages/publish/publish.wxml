@@ -1,2 +1,13 @@
 <!--pages/publish/publish.wxml-->
-<text>pages/publish/publish.wxml</text>
+<scroll-view class="scroll" scroll-y>
+  <form bindsubmit="publishMessage">
+    <textarea name="textarea" class='text-input common-radius' maxlength='300' placeholder="这一刻的想法..." />
+    <view style="flex-direction:row;">
+      <image class="img common-radius" wx:for="{{imgs}}" wx:key="{{item}}" src='{{item}}'></image>
+      <block wx:if="{{imgs.length < 3}}">
+        <image class="img common-radius" bindtap='bindAdd' src='../../images/plus.png'></image>
+      </block>
+    </view>
+    <button form-type="submit">发表</button>
+  </form>
+</scroll-view>

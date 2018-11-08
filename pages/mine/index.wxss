@@ -19,3 +19,7 @@
 .usermotto {
   margin-top: 200px;
 }
+.navigator-item {
+  padding: 25rpx;
+  height: 50rpx;
+}
