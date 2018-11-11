@@ -1,2 +1,2 @@
 <!--pages/samples/samples.wxml-->
-<map latitude="{{latitude}}" longitude="{{longitude}}"></map>
+<text>开发中...</text>

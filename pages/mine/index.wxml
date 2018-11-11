@@ -11,9 +11,4 @@
     <navigator class="navigator-item" url="{{item.url}}" hover-class="navigator-hover">{{item.text}}</navigator>
     <view class='line'></view>
   </view>
-  <button style='margin: 30rpx 25rpx 0 25rpx' bindtap="uploadFile">上传图片</button>
-  <button style='margin: 30rpx 25rpx 0 25rpx' bindtap="downloadFile">下载文件</button>
-  <button style='margin: 30rpx 25rpx 0 25rpx' bindtap="pushData">上传数据</button>
-  <button style='margin: 30rpx 25rpx 0 25rpx' bindtap="pullData">下载数据</button>
-  <image src="{{imageUrl}}"></image>
 </scroll-view>

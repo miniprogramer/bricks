@@ -7,11 +7,11 @@ Page({
     userInfo: {},
     items: [
       {
-        "text": "上传素材",
-        "url": "../publish/publish"
+        "text": "我的素材",
+        "url": "../my_publish/my_publish"
       },
       {
-        "text": "收藏",
+        "text": "上传素材",
         "url": "../publish/publish"
       }
     ],
@@ -61,65 +61,33 @@ Page({
       hasUserInfo: true
     })
   },
-  uploadFile: function (e) {
+  doChooseImage: function (e) {
     wx.chooseImage({
       success(res) {
         const tempFilePaths = res.tempFilePaths
         const name = tempFilePaths[0].name
-        wx.uploadFile({
-          url: 'https://ddxce.com/singleupload',
-          filePath: tempFilePaths[0],
-          name: 'file',
-          formData: {
-            filenames: name
-          },
-          success(res) {
-            console.log(res.data)
-          },
-          fail(res) {
-            console.info('fail');
-          }
+        console.info(tempFilePaths)
+        app.uploadFile(tempFilePaths[0], function (res) {
+            console.info(res)
         })
       }
     })
   },
-  downloadFile: function (e) {
-    wx.downloadFile({
-      url: 'https://ddxce.com/file/d73b04b0e696b0945283defa3eee4538',
-      success(res) {
-        if (res.statusCode === 200) {
-          console.info(res.tempFilePath)
-        }
-      }
+  doDownloadFile: function (e) {
+    app.downloadFile('d73b04b0e696b0945283defa3eee4538', function (path) {
+      console.info(path)
     })
   },
-  pushData: function (e) {
-    wx.request({
-      url: 'https://ddxce.com/setkv',
-      method: 'POST',
-      data: {
-        key: 'temp',
-        value: '123'
-      },
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success(res) {
-        console.log(res.data)
-      }
+  doPullData: function (e) {
+    app.pullData('temp', function (res) {
+      console.log(res.data)
     })
   },
-  pullData: function (e) {
-    wx.request({
-      url: 'https://ddxce.com/getkv',
-      method: 'POST',
-      data: {
-        key: 'temp'
-      },
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success(res) {
+  doPushData: function (e) {
+    app.pushData({
+      key: 'temp', 
+      value: '123', 
+      callback(res) {
         console.log(res.data)
       }
     })

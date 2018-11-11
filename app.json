@@ -6,14 +6,15 @@
     "pages/mine/index",
     "pages/samples/index",
     "pages/publish/publish",
-    "pages/profile/profile"
+    "pages/profile/profile",
+    "pages/detail/detail",
+    "pages/my_publish/my_publish"
   ],
   "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "九思数据库",
-    "navigationBarTextStyle": "black",
-    "enablePullDownRefresh": true
+    "navigationBarTextStyle": "black"
   },
   "tabBar": {
     "color": "#7A7E83",

@@ -1,19 +1,18 @@
-//index.js
-var app = getApp()
+// pages/my_publish/my_publish.js
 Page({
+
   /**
    * 页面的初始数据
    */
   data: {
-    designInfo: [
-    ]
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+
   },
 
   /**
@@ -27,7 +26,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.refreshData()
+
   },
 
   /**
@@ -48,7 +47,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    this.refreshData()
+
   },
 
   /**
@@ -63,21 +62,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-  refreshData: function() {
-    var vm = this
-    app.pullDataList({
-      prefix: "pubish",
-      success(res) {
-        var kvs = res.data.kvs
-        var infos = []
-        for (var i = 0; i < kvs.length; ++i) {
-          infos.push(JSON.parse(kvs[i].value))
-        }
-        vm.setData({
-          designInfo: infos
-        })
-      }
-    })
   }
 })

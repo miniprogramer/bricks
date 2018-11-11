@@ -1,8 +1,7 @@
 <!--index.wxml-->
 <scroll-view class="scroll" scroll-y>
-  <view class="kind-list-item" wx:for="{{designInfo}}" wx:key="{{designInfo.id}}">
-    <text>{{item.id}}</text>
-    <image class="image-avatar" src="{{item.url}}" mode="cover"></image>
-    <text>{{item.text}}</text>
+  <view class="kind-list-item" wx:for="{{designInfo}}" wx:key="{{item.index}}">
+    <image class="image-avatar" src="{{'https://ddxce.com/file/' + item.imgs[0]}}" mode="cover"></image>
+    <text>{{item.text + '  ' + item.time}}</text>
   </view>
 </scroll-view>

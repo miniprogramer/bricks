@@ -69,9 +69,9 @@ Page({
   bindAdd: function(e) {
     var vm = this
     wx.chooseImage({
+      count: 3 - vm.data.imgs.length,
       success(res) {
-        const tempFilePaths = res.tempFilePaths
-        vm.data.imgs.push(tempFilePaths)
+        vm.data.imgs = vm.data.imgs.concat(res.tempFilePaths)
         vm.setData({
           imgs: vm.data.imgs
         })
@@ -93,25 +93,56 @@ Page({
       }
     })
   },
-  publishMessage: function(e) {
+  bindRemove: function (e) {
     var vm = this
-    var json = {
-      key: "pubish-" + app.globalData.userInfo.nickName + "-" + new Date().getTime(),
-      value: {
-        text: e.detail.value.textarea,
-        imgs: vm.data.imgs
-      }
-    };
+    var imgs = vm.data.imgs
     wx.showModal({
-      title: '结果',
-      content: JSON.stringify(json),
+      title: '提示',
+      content: '是否移除该图片',
       success(res) {
         if (res.confirm) {
-          console.log('用户点击确定')
-        } else if (res.cancel) {
-          console.log('用户点击取消')
+          imgs.remove(e.currentTarget.dataset.name[0])
+          vm.setData({
+            imgs: imgs
+          })
         }
       }
+    })
+  },
+  publishMessage: function(e) {
+    var vm = this
+    wx.showLoading({
+        title: '正在上传',
+        success(res) {
+          app.uploadFiles({
+            paths: vm.data.imgs,
+            success(res) {
+              var time = new Date().getTime()
+              app.pushData({
+                key: "pubish-" + app.globalData.userInfo.nickName + "-" + time,
+                value: JSON.stringify({
+                  username: app.globalData.userInfo.nickName,
+                  text: e.detail.value.textarea,
+                  imgs: res.fileIds,
+                  time: time
+                }),
+                callback(res) {
+                  wx.hideLoading()
+                  wx.switchTab({
+                    url: '../index/index',
+                  })
+                }
+              })
+             },
+             fail(res) {
+              wx.hideLoading()
+              wx.showModal({
+                 title: '提示',
+                 content: '发布失败'
+               })
+             }
+          })
+        }
     })
   }
 })
